@@ -6695,6 +6695,19 @@
       }
     ]
   },
+  "gettr.com": {
+    "_name": "GETTR",
+    ".": [
+      {
+        "title": "个人时间线",
+        "docs": "https://docs.rsshub.app/social-media.html#gettr",
+        "source": [
+          "/user/:id"
+        ],
+        "target": "/gettr/user/:id"
+      }
+    ]
+  },
   "sunborngame.com": {
     "_name": "少女前线",
     ".": [
@@ -15150,6 +15163,19 @@
           "/"
         ],
         "target": "/pmthinking"
+      }
+    ]
+  },
+  "pnas.org": {
+    "_name": "Proceedings of the National Academy of Sciences",
+    ".": [
+      {
+        "title": "期刊",
+        "docs": "https://docs.rsshub.app/journal.html#proceedings-of-the-national-academy-of-sciences",
+        "source": [
+          "/*topicPath"
+        ],
+        "target": "/pnas/:topicPath"
       }
     ]
   },
