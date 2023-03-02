@@ -263,7 +263,7 @@
     "/aijishu/channel/:name": [
         "bigfei"
     ],
-    "/aijishu/user/:name": [
+    "/aijishu/u/:name": [
         "bigfei"
     ],
     "/airchina/announcement": [
@@ -1172,6 +1172,9 @@
     "/diershoubing/news": [
         "wushijishan"
     ],
+    "/discord/channel/:channelID": [
+        "TonyRL"
+    ],
     "/disinfo/publications": [
         "nczitzk"
     ],
@@ -1783,6 +1786,13 @@
     ],
     "/gov/cnnic/:path+": [
         "nczitzk"
+    ],
+    "/gov/csrc/auditstatus/:apply_id": [
+        "hillerliao"
+    ],
+    "/gov/csrc/news/:suffix*": [
+        "chinobing",
+        "LogicJake"
     ],
     "/gov/customs/list/:gchannel?": [
         "Jeason0228",
@@ -3524,6 +3534,9 @@
     "/pianyuan/indexers/pianyuan/results/search/api": [
         "jerry1119"
     ],
+    "/picnob/user/:id": [
+        "TonyRL"
+    ],
     "/picuki/profile/:id/:functionalFlag?": [
         "hoilc",
         "Rongronggg9",
@@ -5087,8 +5100,14 @@
         "xyqfer",
         "Fatpandac"
     ],
+    "/youtube/c/:id/:embed?": [
+        "TonyRL"
+    ],
     "/youtube/channel/:id/:embed?": [
         "DIYgod"
+    ],
+    "/youtube/charts/:category?/:country?/:embed?": [
+        "TonyRL"
     ],
     "/youtube/playlist/:id/:embed?": [
         "HenryQW"
@@ -5810,9 +5829,6 @@
     "/8btc/:authorid": [],
     "/8btc/news/flash": [],
     "/vuevideo/:userid": [],
-    "/csrc/news/:suffix?": [],
-    "/csrc/fashenwei": [],
-    "/csrc/auditstatus/:apply_id": [],
     "/lwn/alerts/:distributor": [],
     "/lol/newsindex/:type": [],
     "/lolapp/recommend": [],
