@@ -134,6 +134,12 @@
         source:[ "/",
           "/mormhweb/1/:id/index_fl.html" ],
         target:"/12306/zxdt/:id" } ] },
+  "0818tuan.com":{ _name:"0818 团",
+    ".":[ { title:"分类",
+        docs:"https://docs.rsshub.app/shopping.html#_0818-tuan",
+        source:[ "/:listId",
+          "/" ],
+        target:(params) => `/0818tuan${params.listId ? '/' + params.listId.replace('list-', '').replace('-0.html', '') : ''}` } ] },
   "18comic.org":{ _name:"禁漫天堂",
     ".":[ { title:"成人 A 漫",
         docs:"https://docs.rsshub.app/anime.html#jin-man-tian-tang-cheng-ren-a-man",
@@ -883,6 +889,16 @@
         source:[ "/",
           "/html/:category?/:topic?" ],
         target:"/ally/rail/:category?/:topic?" } ] },
+  "amazon.com":{ _name:"Amazon",
+    ".":[ { title:"Kindle 软件更新",
+        docs:"https://docs.rsshub.app/program-update.html#amazon",
+        source:[ "/gp/help/customer/display.html" ],
+        target:(_, url) => {
+                    const nodeId = new URL(url).searchParams.get('nodeId');
+                    if (nodeId === 'GKMQC26VQQMM8XSW') {
+                        return '/amazon/kindle/software-updates';
+                    }
+                } } ] },
   "android.com":{ _name:"Android Developers",
     developer:[ { title:"SDK Platform Tools release notes",
         docs:"https://docs.rsshub.app/program-update.html#android-sdk-platform-tools-release-notes",
@@ -1065,6 +1081,11 @@
         docs:"https://docs.rsshub.app/program-update.html#app-store-mac-app-store",
         source:[ "/" ],
         target:"/appstore/gofans" } ] },
+  "arcteryx.com":{ _name:"Arcteryx",
+    ".":[ { title:"新发布",
+        docs:"https://docs.rsshub.app/shopping.html#arcteryx",
+        source:[ "/:country/en/c/:gender/new-arrivals" ],
+        target:"/arcteryx/new-arrivals/:country/:gender" } ] },
   "arknights.jp":{ _name:"明日方舟",
     ak:[ { title:"アークナイツ（日服新闻）",
         docs:"https://docs.rsshub.app/game.html#ming-ri-fang-zhou",
@@ -1379,6 +1400,12 @@
 
                     return `/behance/${uid}${type}`;
                 } } ] },
+  "bellroy.com":{ _name:"Bellroy",
+    ".":[ { title:"新发布",
+        docs:"https://docs.rsshub.app/shopping.html#bellroy",
+        source:[ "/collection/new-releases",
+          "/" ],
+        target:"/bellroy/new-releases" } ] },
   "bendibao.com":{ _name:"本地宝",
     ".":[ { title:"焦点资讯",
         docs:"https://docs.rsshub.app/new-media.html#ben-di-bao-jiao-dian-zi-xun",
@@ -2123,6 +2150,20 @@
         docs:"https://docs.rsshub.app/other.html#clickme",
         source:[ "/:grouping/:name" ],
         target:(params) => `/clickme/r18/${params.grouping === 't' ? 'tag' : 'category'}/${params.name}` } ] },
+  "cls.cn":{ _name:"财联社",
+    ".":[ { title:"电报",
+        docs:"https://docs.rsshub.app/finance.html#cai-lian-she",
+        sources:[ "/telegraph",
+          "/" ],
+        target:"/cls/telegraph" },
+      { title:"深度",
+        docs:"https://docs.rsshub.app/finance.html#cai-lian-she",
+        sources:[ "/depth" ],
+        target:(_, url) => `/cls/depth/${new URL(url).searchParams.get('id')}` },
+      { title:"热门文章排行榜",
+        docs:"https://docs.rsshub.app/finance.html#cai-lian-she",
+        sources:[ "/" ],
+        target:"/cls/hot" } ] },
   "cmde.org.cn":{ _name:"国家药品监督管理局医疗器械技术审评中心",
     www:[ { title:"通用",
         docs:"https://docs.rsshub.app/government.html#guo-jia-yao-pin-jian-du-guan-li-ju-yi-liao-qi-xie-ji-shu-shen-ping-zhong-xin",
@@ -7285,6 +7326,15 @@
         docs:"https://docs.rsshub.app/finance.html#mei-jing-wang",
         source:"/",
         target:"/nbd/daily" } ] },
+  "nber.org":{ _name:"National Bureau of Economic Research",
+    ".":[ { title:"New working paper",
+        docs:"https://docs.rsshub.app/en/journal.html#national-bureau-of-economic-research",
+        source:[ "/papers" ],
+        target:"/nber/news" },
+      { title:"All working paper",
+        docs:"https://docs.rsshub.app/en/journal.html#national-bureau-of-economic-research",
+        source:[ "/papers" ],
+        target:"/nber/papers" } ] },
   "ncepu.edu.cn":{ _name:"华北电力大学研究生院",
     yjsy:[ { title:"通知公告",
         docs:" https://docs.rsshub.app/university.html#hua-bei-dian-li-da-xue",
@@ -7504,11 +7554,48 @@
                         return `/nifd/research/${categoryGuid}`;
                     }
                 } } ] },
-  "nikkei.com":{ _name:"日本経済新聞",
+  "nikkei.com":{ _name:"日本经济新闻",
+    asia:[ { title:"Latest News",
+        docs:"https://docs.rsshub.app/traditional-media.html#ri-ben-jing-ji-xin-wen",
+        source:"/",
+        target:"/nikkei/asia" } ],
+    cn:[ { title:"中文版新闻",
+        docs:"https://docs.rsshub.app/traditional-media.html#ri-ben-jing-ji-xin-wen-zhong-wen-ban-xin-wen",
+        source:[ "/:category/:type",
+          "/:category",
+          "/" ],
+        target:(params) => {
+                    if (params.category && params.type) {
+                        return `/nikkei/cn/cn/${params.category}/${params.type.replace('.html', '')}`;
+                    } else if (params.category && !params.type) {
+                        return `/nikkei/cn/cn/${params.category.replace('.html', '')}`;
+                    } else {
+                        return `/nikkei/cn/cn`;
+                    }
+                } } ],
     www:[ { title:"ホームページ",
         docs:"https://docs.rsshub.app/traditional-media.html#ri-ben-jing-ji-xin-wen",
         source:"/",
-        target:"/nikkei/index" } ] },
+        target:"/nikkei/index" },
+      { title:"新聞",
+        docs:"https://docs.rsshub.app/traditional-media.html#ri-ben-jing-ji-xin-wen",
+        source:[ "/:category/archive",
+          "/:category" ],
+        target:"/nikkei/:category" } ],
+    "zh.cn":[ { title:"中文版新聞",
+        docs:"https://docs.rsshub.app/traditional-media.html#ri-ben-jing-ji-xin-wen-zhong-wen-ban-xin-wen",
+        source:[ "/:category/:type",
+          "/:category",
+          "/" ],
+        target:(params) => {
+                    if (params.category && params.type) {
+                        return `/nikkei/cn/zh/${params.category}/${params.type.replace('.html', '')}`;
+                    } else if (params.category && !params.type) {
+                        return `/nikkei/cn/zh/${params.category.replace('.html', '')}`;
+                    } else {
+                        return `/nikkei/cn/zh`;
+                    }
+                } } ] },
   "nintendo.com":{ _name:"Nintendo",
     ".":[ { title:"直面会",
         docs:"https://docs.rsshub.app/game.html#nintendo",
@@ -9402,6 +9489,12 @@
         docs:"https://docs.rsshub.app/shopping.html#shen-me-zhi-de-mai",
         source:"/member/:uid/baoliao",
         target:"/smzdm/baoliao/:uid" } ] },
+  "snowpeak.com":{ _name:"Snow Peak",
+    ".":[ { title:"New Arrivals(USA)",
+        docs:"https://docs.rsshub.app/shopping.html#snow-peak",
+        source:[ "/collections/new-arrivals",
+          "/" ],
+        target:"/snowpeak/us/new-arrivals" } ] },
   "sobooks.net":{ _name:"SoBooks",
     ".":[ { title:"分类",
         docs:"https://docs.rsshub.app/reading.html#sobooks",
@@ -9477,6 +9570,11 @@
         docs:"https://docs.rsshub.app/traditional-media.html#solidot",
         source:[ "/" ],
         target:"/solidot/story" } ] },
+  "sony.com":{ _name:"Sony",
+    ".":[ { title:"Software Downloads",
+        docs:"https://docs.rsshub.app/program-update.html#sony",
+        source:[ "/electronics/support/:productType/:productId/downloads" ],
+        target:"/sony/downloads/:productType/:productId" } ] },
   "soundofhope.org":{ _name:"希望之声",
     ".":[ { title:"频道",
         docs:"https://docs.rsshub.app/traditional-media.html#xi-wang-zhi-sheng",
@@ -10598,6 +10696,11 @@
         docs:"https://docs.rsshub.app/university.html#university-of-washington",
         source:[ "/news/:category" ],
         target:"/uw/gix/news/:category" } ] },
+  "v1tx.com":{ _name:"v1tx",
+    ".":[ { title:"最新文章",
+        docs:"https://docs.rsshub.app/blog.html#v1tx",
+        source:[ "/" ],
+        target:"/v1tx" } ] },
   "baden-wuerttemberg.de":{ _name:"Constitutional Court of Baden-Württemberg (Germany)",
     verfgh:[ { title:"Press releases",
         docs:"https://docs.rsshub.app/en/government.html#constitutional-court-of-baden-wurttemberg-germany",
@@ -11100,6 +11203,17 @@
         source:[ "/:id",
           "/" ],
         target:"/xmnn/epaper/:id" } ] },
+  "xsijishe.com":{ _name:"司机社",
+    ".":[ { title:"论坛",
+        docs:"https://docs.rsshub.app/bbs.html#si-ji-she",
+        source:[ "/*" ],
+        target:(_, url) => {
+                    const re = /forum-(\d+)-/;
+                    const res = re.exec(url);
+                    if (res) {
+                        return `/xsijishe/forum/${res[1]}`;
+                    }
+                } } ] },
   "danjuanapp.com":{ _name:"雪球",
     ".":[ { title:"蛋卷基金净值更新",
         docs:"https://docs.rsshub.app/finance.html#xue-qiu",
@@ -11901,19 +12015,6 @@
         docs:"https://docs.rsshub.app/other.html#wegene",
         source:"/crowdsourcing",
         target:"/wegene/column/all/all" } ] },
-  "qdaily.com":{ _name:"好奇心日报",
-    www:[ { title:"标签",
-        docs:"https://docs.rsshub.app/new-media.html#hao-qi-xin-ri-bao",
-        source:"/tags/:idd",
-        target:(params) => `/qdaily/tag/${params.idd.replace('.html', '')}` },
-      { title:"栏目",
-        docs:"https://docs.rsshub.app/new-media.html#hao-qi-xin-ri-bao",
-        source:"/special_columns/:idd",
-        target:(params) => `/qdaily/column/${params.idd.replace('.html', '')}` },
-      { title:"分类",
-        docs:"https://docs.rsshub.app/new-media.html#hao-qi-xin-ri-bao",
-        source:"/categories/:idd",
-        target:(params) => `/qdaily/category/${params.idd.replace('.html', '')}` } ] },
   "3ycy.com":{ _name:"三界异次元",
     www:[ { title:"最近更新",
         docs:"https://docs.rsshub.app/anime.html#san-jie-yi-ci-yuan",
